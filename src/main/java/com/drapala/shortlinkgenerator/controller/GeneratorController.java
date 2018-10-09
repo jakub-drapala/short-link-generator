@@ -1,17 +1,23 @@
 package com.drapala.shortlinkgenerator.controller;
 
 import com.drapala.shortlinkgenerator.sercive.GeneratorService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.net.URL;
+
+@Slf4j
 @Controller
 public class GeneratorController {
 
     private final GeneratorService service;
+
 
     @Autowired
     public GeneratorController(GeneratorService service) {
@@ -30,5 +36,23 @@ public class GeneratorController {
 
         return "redirect:/short-link-generator";
     }
+
+
+    @RequestMapping(value = "/{shortLink}",method = RequestMethod.GET)
+    public String postTest(@PathVariable String shortLink) {
+
+        log.info("Url to redirect: {}", shortLink);
+        String longLink = service.getLongLink(shortLink);
+
+
+
+        return "redirect:/" + longLink;
+
+    }
+
+
+
+
+
 
 }

@@ -15,10 +15,10 @@ public class Link {
     private int id;
 
     @Getter
-    @Column(nullable = false)
+    @Column(nullable = false, name = "long")
     private String longLink;
 
-    @Column
+    @Column(name = "short")
     private String shortLink;
 
     public Link(String longLink, String shortLink) {

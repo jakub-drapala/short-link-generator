@@ -11,12 +11,23 @@ public class Generator {
     @Autowired
     LinkRepository repository;
 
-    private char startValue = 'a';
+    private char nextLink = 'a';
 
     public void saveLink(String longLink) {
-        String startValue =   String.valueOf(this.startValue);
+        String startValue =   String.valueOf(this.nextLink);
         Link toSave = new Link(longLink, startValue);
         repository.saveLink(toSave);
+
+        setNextLink();
+    }
+
+
+
+
+
+
+    public void setNextLink() {
+        this.nextLink++;
     }
 
 
