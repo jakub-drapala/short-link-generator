@@ -25,4 +25,8 @@ public class GeneratorService {
     public String getLongLink(String shortLink) {
         return repository.getLongLink(shortLink);
     }
+
+   public String process(String longLink) {
+        return generator.process(longLink);
+   }
 }

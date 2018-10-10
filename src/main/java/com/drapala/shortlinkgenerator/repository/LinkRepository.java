@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Slf4j
 @Repository
@@ -29,5 +30,26 @@ public class LinkRepository {
         String result = (String) query.getSingleResult();
         log.info("Long link for this query = {}", result);
         return result;
+    }
+
+    public boolean isLonglinkExists(String longLink) {
+        Query query = em.createQuery("Select l.shortLink from Link l where l.longLink = :long")
+                .setParameter("long", longLink);
+        List<Object> results = query.getResultList();
+        boolean isEmpty = results.isEmpty();
+        log.info("Is the result empty - {}", isEmpty);
+/*        if (isEmpty) {
+            return false;
+        } else {
+            return true;
+        }*/
+        return isEmpty ? false : true;
+    }
+
+    public String getShortLink(String longLink) {
+        Query query = em.createQuery("Select l.shortLink from Link l where l.longLink = :long")
+                .setParameter("long", longLink);
+        String shortLink = (String) query.getSingleResult();
+        return shortLink;
     }
 }

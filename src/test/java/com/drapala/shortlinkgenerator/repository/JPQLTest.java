@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.Query;
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -26,7 +27,16 @@ public class JPQLTest {
                 .setParameter("short", shortLink);
         String result = (String) query.getSingleResult();
         log.info("Short link for this query = {}", result);
+    }
 
+    @Test
+    public void isLonglinkExists() {
+        String longLink = "xxxx";
+        Query query = em.createQuery("Select l.shortLink from Link l where l.longLink = :long")
+                .setParameter("long", longLink);
+        List<Object> results = query.getResultList();
+        boolean isEmpty = results.isEmpty();
+        log.info("Is the result empty - {}", isEmpty);
 
     }
 }

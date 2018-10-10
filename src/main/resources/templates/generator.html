@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>short-link-generator</title>
@@ -14,6 +14,8 @@
                value="" autocomplete="off" autocorrect="off" autocapitalize="off">
 
         <input id="shorten_btn" type="submit" class="button button-primary button-large shorten-button" value="Shorten">
+
+        <p th:text="${shortLink}"></p>
 
     </form>
 </body>
