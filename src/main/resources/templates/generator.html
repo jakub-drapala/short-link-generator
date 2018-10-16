@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<link href="../static/css.style.css" th:href="@{css/style.css}" rel="stylesheet" />
 <head>
     <meta charset="UTF-8">
     <title>short-link-generator</title>
 </head>
 <body>
-    <h2>Short-link-generator</h2>
+    <h1 class="page-title">HARNESS EVERY CLICK, TAP AND SWIPE.</h1>
 
     <form method="post" action="generate">
 
@@ -13,10 +14,18 @@
                class="shorten-input" placeholder="Paste a link to shorten it"
                value="" autocomplete="off" autocorrect="off" autocapitalize="off">
 
-        <input id="shorten_btn" type="submit" class="button button-primary button-large shorten-button" value="Shorten">
-
-        <p th:text="${shortLink}"></p>
+        <input id="shorten_btn" type="submit" class="button button-primary button-large shorten-button" value="Shorten"/>
 
     </form>
+
+    <br/>
+
+    <div class="unauth_capsule clearfix">
+        <a class="short-url" th:href="${shortLink}"><span th:text="${shortLink}">Short link</span></a>
+        <br/>
+        <span th:text="${longLink}"> </span>
+    </div>
+
+
 </body>
 </html>

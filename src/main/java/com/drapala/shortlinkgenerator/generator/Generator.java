@@ -13,7 +13,13 @@ public class Generator {
     @Autowired
     LinkRepository repository;
 
-    private char nextLink = 'a';
+    LinkCreator linkCreator;
+
+    public Generator() {
+        this.linkCreator = new LinkCreator();
+    }
+
+    private int id = 1;
 
 
     public String process(String longLink) {
@@ -30,7 +36,8 @@ public class Generator {
 
 
     public void saveLink(String longLink) {
-        String startValue =   String.valueOf(this.nextLink);
+        this.linkCreator.getCode(id);
+        String startValue =   /*"https://" +*/ String.valueOf(this.linkCreator);
         Link toSave = new Link(longLink, startValue);
         repository.saveLink(toSave);
 
@@ -49,7 +56,7 @@ public class Generator {
 
 
     public void setNextLink() {
-        this.nextLink++;
+        this.id++;
     }
 
 

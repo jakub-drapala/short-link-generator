@@ -1,0 +1,26 @@
+body {
+    font-family: Helvetica,Arial,sans-serif;
+    color: #a3aaae;
+    font-size: 15.6px;
+}
+
+#shorten_url {
+    width: 500px;
+}
+
+a {
+    color: #ee6123;
+    text-decoration: none;
+}
+
+.copy-input {
+    position: absolute;
+    left: -10000px;
+}
+
+
+
+
+
+
+

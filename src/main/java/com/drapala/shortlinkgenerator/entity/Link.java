@@ -2,10 +2,7 @@ package com.drapala.shortlinkgenerator.entity;
 
 import lombok.Getter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Link {
@@ -15,6 +12,7 @@ public class Link {
     private int id;
 
     @Getter
+    @Lob
     @Column(nullable = false, name = "long")
     private String longLink;
 
