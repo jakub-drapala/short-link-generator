@@ -21,4 +21,4 @@ If you want check how new *short links* are created, you need uncomment class *c
 
 ## Database:
 
-If app work, database is so available in url: http://localhost:8080/h2-console/
+If app work, database is available in url: http://localhost:8080/h2-console/
